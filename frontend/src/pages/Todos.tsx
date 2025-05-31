@@ -1,16 +1,23 @@
+import type { Category } from "../services/categories";
 import type { Todo } from "../services/todos";
 
 interface TodosProps {
-  data: Todo[];
+  todosData: Todo[];
+  categoriesData: Category[];
 }
 
-const Todos = ({ data }: TodosProps) => {
-  if (!data) return <p>Loading..</p>;
+const Todos = ({ todosData, categoriesData }: TodosProps) => {
+  if (!todosData || !categoriesData) return <p>Loading..</p>;
   return (
     <div>
-      {data.map((todo) => (
+      {todosData.map((todo) => (
         <div key={todo.id}>
-          <p>{todo.title}</p>
+          <p>Task: {todo.title}</p>
+        </div>
+      ))}
+      {categoriesData.map((category) => (
+        <div key={category.id}>
+          <p>Category: {category.title}</p>
         </div>
       ))}
     </div>

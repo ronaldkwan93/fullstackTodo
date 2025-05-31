@@ -10,6 +10,6 @@ export const getAllTodos = async (): Promise<Todo[]> => {
     }
     // console.log(response);
     const result = await response.json();
-    console.log(result);
+    console.log(result, "todo results");
     return result;
 }
