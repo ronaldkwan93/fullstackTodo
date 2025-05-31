@@ -1,10 +1,17 @@
+import { useEffect, useState } from "react";
 import "./App.css";
-import Todo from "./pages/Todo";
+import { getAllTodos, type Todo } from "./services/todos";
+import Todos from "./pages/Todos";
 
 function App() {
+  const [todosData, setTodosData] = useState<Todo[]>([]);
+
+  useEffect(() => {
+    getAllTodos().then(data => setTodosData(data));
+  },[])
   return (
     <>
-      <Todo />
+      <Todos data={todosData}/>
     </>
   );
 }
