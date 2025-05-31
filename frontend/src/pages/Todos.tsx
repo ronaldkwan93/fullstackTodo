@@ -9,9 +9,21 @@ interface TodosProps {
 
 const Todos = ({ todosData, categoriesData }: TodosProps) => {
   if (!todosData || !categoriesData) return <p>Loading..</p>;
+  console.log(categoriesData, "categories");
+  const catList = [];
+  for(let i =0; i< categoriesData.length; i++) {
+    catList.push(categoriesData[i].title);
+    if(i === categoriesData.length -1) {
+      break;
+    }
+    catList.push(", ");
+  }
+  console.log(catList);
+
   return (
     <div>
       <h3>Task Categories</h3>
+      <p>{catList}</p>
       <AddCategory />
       {todosData.map((todo) => (
         <div key={todo.id}>

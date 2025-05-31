@@ -8,6 +8,8 @@ function App() {
   const [todosData, setTodosData] = useState<Todo[]>([]);
   const [categoriesData, setCategoriesData] = useState<Category[]>([]);
 
+  
+
   useEffect(() => {
     getAllTodos().then(data => setTodosData(data));
     getAllCategories().then(data => setCategoriesData(data));
